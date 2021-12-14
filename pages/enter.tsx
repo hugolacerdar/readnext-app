@@ -1,8 +1,9 @@
+import { useContext } from "react";
+import { UserContext } from "../lib/userContext";
 import { auth, googleAuthProvider } from "../lib/firebase";
 
 export default function EnterPage({}) {
-  const user = null;
-  const username = null;
+  const { user, username } = useContext(UserContext);
 
   return (
     <main>
@@ -31,7 +32,11 @@ function SignInButton() {
   );
 }
 function SignOutButton() {
-  return <></>;
+  return (
+    <button className="btn-google" onClick={() => auth.signOut()}>
+      Sign Out
+    </button>
+  );
 }
 function UsernameForm() {
   return <></>;
