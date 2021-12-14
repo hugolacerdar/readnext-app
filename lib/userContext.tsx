@@ -3,6 +3,8 @@ import { createContext } from "react";
 interface UserContextProps {
   user: {
     photoURL?: string;
+    uid?: string;
+    displayName?: string;
   };
   username: string | undefined;
 }
