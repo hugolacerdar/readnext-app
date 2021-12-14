@@ -16,7 +16,7 @@ export function useUserData() {
         setUsername(doc.data()?.username);
       });
     } else {
-      setUsername(null);
+      setUsername(undefined);
     }
 
     return unsubscribe;
