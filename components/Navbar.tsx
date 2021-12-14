@@ -6,7 +6,7 @@ interface UserInterface {
 
 export default function Navbar() {
   const user: UserInterface = {};
-  const username = true;
+  const username = null;
 
   return (
     <nav className="navbar">
