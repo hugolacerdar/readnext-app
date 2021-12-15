@@ -14,10 +14,10 @@ interface Post {
 
 interface PostFeedProps {
   posts: Post[];
+  admin?: boolean;
 }
 
-export default function PostFeed({ posts }: PostFeedProps) {
-  const admin = false;
+export default function PostFeed({ posts, admin = false }: PostFeedProps) {
   return (
     <>
       {posts
