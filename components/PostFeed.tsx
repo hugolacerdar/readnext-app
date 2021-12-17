@@ -44,7 +44,7 @@ function PostItem({ post, admin = false }: PostItemProps) {
           <strong>By @{post.username}</strong>
         </a>
       </Link>
-      <Link href={`/${post.username}/${post.slug}`}>
+      <Link href={`/${post.username}/${post.slug}`} passHref>
         <h2>
           <a>{post.title}</a>
         </h2>
@@ -55,6 +55,21 @@ function PostItem({ post, admin = false }: PostItemProps) {
         </span>
         <span>🤎 {post.heartCount} Hearts</span>
       </footer>
+      {admin && (
+        <>
+          <Link href={`/admin/${post.slug}`} passHref>
+            <h3>
+              <button className="btn-blue">Edit</button>
+            </h3>
+          </Link>
+
+          {post.published ? (
+            <p className="text-success">Live</p>
+          ) : (
+            <p className="text-danger">Unpublished</p>
+          )}
+        </>
+      )}
     </div>
   );
 }
