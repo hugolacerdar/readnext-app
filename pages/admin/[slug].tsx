@@ -73,6 +73,7 @@ function PostManager() {
             <Link href={`/${post.username}/${post.slug}`} passHref>
               <button className="btn-blue">Live view</button>
             </Link>
+            <DeletePostButton postRef={postRef} />
           </aside>
         </>
       )}
@@ -153,5 +154,28 @@ function PostForm({ postRef, defaultValues, preview }: PostFormProps) {
         </button>
       </div>
     </form>
+  );
+}
+
+interface DeletePostButtonProps {
+  postRef: DocumentReference;
+}
+
+function DeletePostButton({ postRef }: DeletePostButtonProps) {
+  const router = useRouter();
+
+  const deletePost = async () => {
+    const doIt = confirm("are you sure!");
+    if (doIt) {
+      await postRef.delete();
+      router.push("/admin");
+      toast("post annihilated ", { icon: "🗑️" });
+    }
+  };
+
+  return (
+    <button className="btn-red" onClick={deletePost}>
+      Delete
+    </button>
   );
 }
