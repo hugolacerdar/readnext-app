@@ -6,6 +6,7 @@ import {
   serverTimestamp,
   DocumentReference,
 } from "../../lib/firebase";
+import ImageUploader from "../../components/ImageUploader";
 
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -50,7 +51,6 @@ function PostManager() {
 
   const [post] = useDocumentData<Post>(postRef);
 
-  console.log(post);
   return (
     <main className={styles.container}>
       {post && (
@@ -87,10 +87,12 @@ interface PostFormProps {
 }
 
 function PostForm({ postRef, defaultValues, preview }: PostFormProps) {
-  const { register, handleSubmit, reset, watch } = useForm({
+  const { register, handleSubmit, reset, watch, formState, errors } = useForm({
     defaultValues,
     mode: "onChange",
   });
+
+  const { isValid, isDirty } = formState;
 
   async function updatePost({
     content,
@@ -119,7 +121,20 @@ function PostForm({ postRef, defaultValues, preview }: PostFormProps) {
       )}
 
       <div className={preview ? styles.hidden : styles.controls}>
-        <textarea name="content" ref={register}></textarea>
+        <ImageUploader />
+        <textarea
+          name="content"
+          ref={register({
+            maxLength: { value: 20000, message: "content is too long" },
+            minLength: { value: 10, message: "content is too short" },
+            required: { value: true, message: "content is required" },
+          })}
+        ></textarea>
+
+        {errors.content && (
+          <p className="text-danger">{errors.content.message}</p>
+        )}
+
         <fieldset>
           <input
             className={styles.checkbox}
@@ -129,7 +144,11 @@ function PostForm({ postRef, defaultValues, preview }: PostFormProps) {
           />
           <label>Published</label>
         </fieldset>
-        <button type="submit" className="btn-green">
+        <button
+          type="submit"
+          className="btn-green"
+          disabled={!isDirty || !isValid}
+        >
           Save Changes
         </button>
       </div>
