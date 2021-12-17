@@ -5,6 +5,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { firestore, getUserWithUsername, postToJSON } from "../../lib/firebase";
 import PostContent from "../../components/PostContent";
+import AuthCheck from "../../components/AuthCheck";
+import HeartButton from "../../components/HeartButton";
+import Link from "next/link";
 
 interface Post {
   title: string;
@@ -46,6 +49,15 @@ export default function PostPage(props: PostPageProps) {
         <p>
           <strong>{post.heartCount || 0} 🤎</strong>
         </p>
+        <AuthCheck
+          fallback={
+            <Link href="/enter" passHref>
+              <button>🤎 Sign Up</button>
+            </Link>
+          }
+        >
+          <HeartButton postRef={postRef} />
+        </AuthCheck>
       </aside>
     </main>
   );
