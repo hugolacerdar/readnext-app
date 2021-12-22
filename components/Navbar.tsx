@@ -18,7 +18,7 @@ export default function Navbar() {
       <ul>
         <li>
           <Link href="/" passHref>
-            <button className="btn-logo">READNXT</button>
+            <button className="btn-logo">R.NXT</button>
           </Link>
         </li>
         {username && (
