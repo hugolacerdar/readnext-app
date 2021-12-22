@@ -56,7 +56,7 @@ The project demo is live at :  https://readnext-app.vercel.app/
 
 ## Future improvements
 
-- [ ] Comments sections
+- [ ] Comments section
 - [ ] Tags relation
 
 ## Built with 
