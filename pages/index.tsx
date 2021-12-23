@@ -8,6 +8,7 @@ import { GetServerSideProps } from "next";
 import { firestore, fromMillis, postToJSON } from "../lib/firebase";
 import { useState } from "react";
 import PostFeed from "../components/PostFeed";
+import Metatags from "../components/Metatags";
 
 interface Post {
   title: string;
@@ -56,6 +57,11 @@ export default function Home(props: HomePageProps) {
   }
   return (
     <main>
+      <Metatags
+        title="Home Page"
+        description="The READNEXT home page."
+        image="./readme/rtx.png"
+      />
       <PostFeed posts={posts} />
       {!loading && !postsEnd && (
         <button onClick={getMorePosts}>Load more</button>

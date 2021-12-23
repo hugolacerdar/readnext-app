@@ -11,7 +11,7 @@ export default function Metatags({ title, description, image }: MetatagsProps) {
     <Head>
       <title>{title} | READNEXT</title>
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@fireship_dev" />
+      <meta name="twitter:site" content="@hugolacerdar" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
