@@ -60,7 +60,7 @@ export default function Home(props: HomePageProps) {
       <Metatags
         title="Home Page"
         description="The READNEXT home page."
-        image="./public/readme/rtx.png"
+        image="https://readnext-app.vercel.app/readme/og-image.png"
       />
       <PostFeed posts={posts} />
       {!loading && !postsEnd && (

@@ -30,7 +30,7 @@ export default function AdminPostsPage({}) {
       <Metatags
         title="Admin Page"
         description="The READNEXT admin page."
-        image="./public/readme/rtx.png"
+        image="https://readnext-app.vercel.app/readme/og-image.png"
       />
       <AuthCheck>
         <PostList />
