@@ -1,5 +1,5 @@
 <p align="center"> 
-  <img src="./public/readme/rtx.png" width="400px"> 
+  <img src="./public/readme/og-image.png" width="1200px"> 
 </p>
 
 # READNEXT
